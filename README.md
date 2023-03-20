@@ -1,2 +1,2 @@
 ### React-Redux-App
-Branch "webpack-base-starter-configuration".
+Single page application (SPA) created with React library.
