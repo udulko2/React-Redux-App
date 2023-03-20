@@ -1,2 +1,2 @@
 ### React-Redux-App
-Branch "main".
+Branch "webpack-base-starter-configuration".
