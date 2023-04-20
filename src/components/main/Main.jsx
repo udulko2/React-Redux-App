@@ -29,7 +29,7 @@ const Main = () => {
     dispatch(getRepos(searchValue, currentPage, perPage))
   }
 
-  /* Error handling (isFetchError): Use either this code block (Navigate to stand-alone Error page) or block below (bootstrap alert component). */
+  /* Error handling (isFetchError): Use either this code block (Navigate to stand-alone Error page) or block below (Bootstrap alert component). */
   if (isFetchError) {
     return <Navigate to='/error' />
   }
