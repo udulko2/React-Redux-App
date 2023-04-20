@@ -5,11 +5,13 @@ import { getRepos } from '../actions/repos';
 import Repo from './repo/Repo';
 import { setCurrentPage } from '../../reducers/reposReducer';
 import { createPages } from '../../utils/pagesCreator';
+import { Navigate } from 'react-router-dom';
 
 const Main = () => {
   const dispatch = useDispatch();
   const repos = useSelector(state => state.repos.items)
   const isFetching = useSelector(state => state.repos.isFetching)
+  const isFetchError = useSelector(state => state.repos.isFetchError)
   const totalCount = useSelector(state => state.repos.totalCount)
   const currentPage = useSelector(state => state.repos.currentPage)
   const perPage = useSelector(state => state.repos.perPage)
@@ -27,8 +29,18 @@ const Main = () => {
     dispatch(getRepos(searchValue, currentPage, perPage))
   }
 
+  /* Error handling (isFetchError): Use either this code block (Navigate to stand-alone Error page) or block below (bootstrap alert component). */
+  if (isFetchError) {
+    return <Navigate to='/error' />
+  }
+
   return (
     <div>
+      {/* {isFetchError &&
+        <div className="alert alert-danger" role="alert">
+          Error occurred! Please reload the page!
+        </div>
+      } */}
       <div className="search">
         <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder="Input repo name" className="search-input" />
         <button onClick={handleSearch} className="search-btn">Search</button>
@@ -36,7 +48,7 @@ const Main = () => {
       {
         isFetching === false
           ?
-          repos.map(repo => <Repo repo={repo} />)
+          repos.map(repo => <Repo key={repo.id} repo={repo} />)
           :
           <div className="fetching"></div>
       }

@@ -23,7 +23,7 @@ const Card = () => {
         <div className="stars">{repo.stargazers_count}</div>
       </div>
       {contributors.map((c, index) =>
-        <div>{index + 1}. {c.login}</div>
+        <div key={index}>{index + 1}. {c.login}</div>
       )}
     </div>
   );
