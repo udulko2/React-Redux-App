@@ -1,7 +1,8 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './app.less'
 import Main from './main/Main'
+import Card from './card/Card'
 
 const App = () => {
 
@@ -10,6 +11,8 @@ const App = () => {
       <div className="container">
         <Routes>
           <Route path='/' Component={Main} />
+          <Route path='/card' Component={Card} />
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </div>
     </BrowserRouter>
