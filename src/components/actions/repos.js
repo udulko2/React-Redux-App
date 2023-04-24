@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setFetchError, setIsFetching, setRepos } from "../../reducers/reposReducer";
+import { setFetchError, setIsFetching, setRepos } from "../../redux/legacy/reposReducer";
 
 export const getRepos = (searchQuery = "stars:%3E1", currentPage, perPage) => {
   if (searchQuery.trim().length === 0) {
