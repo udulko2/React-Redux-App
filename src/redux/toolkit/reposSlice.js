@@ -18,8 +18,8 @@ export const reposSlice = createSlice({
       state.isFetching = false
       state.totalCount = action.payload.total_count
     },
-    setIsFetching: (state) => {
-      state.isFetching = true
+    setIsFetching: (state, action) => {
+      state.isFetching = action.payload
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload
